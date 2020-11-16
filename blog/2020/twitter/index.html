@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Shambhavi  Mishra | blank</title>
+<title>Shambhavi  Mishra | Paying Attention Again!</title>
 <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
@@ -29,7 +29,7 @@
 <link rel="shortcut icon" href="/assets/img/favicon.ico">
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/blog/2020/twitter/">
 
 <!-- Theming-->
 
@@ -131,38 +131,66 @@
     <!-- Content -->
 
     <div class="container mt-5">
-      <div class="post">
+      
 
-  <div class="header-bar">
-    <h1>blogs</h1>
-    <h2>blogs on ML and DL</h2>
-  </div>
+<div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Paying Attention Again!</h1>
+    <p class="post-meta">October 28, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <p>The Transformer Architecture [1] introduced by Vaswani et al, is based on attention mechanism and overcomes the challenges faced in recurrence. In continuation to the last blog ‘Let’s pay some Attention!’, let’s delve deeper into Attention Mechanism.</p>
+
+<p>Recurrent Neural Networks or RNNs were introduced to handle the sequential data but optimisation tends to take longer in case of RNN due to :</p>
+<ul>
+  <li>The number of iterations or steps in gradient descent is higher in recurrence.</li>
+  <li>There are several sequential operations which can not be parallelised easily.</li>
+</ul>
+
+<h2 id="multi-head-attention">Multi-Head Attention</h2>
+<p>Let’s do a quick recap of the attention mechanism we understood in the last blog. 
+We have some key - value pairs and a query. We compare the query to each key and the key with the highest similarity score is assigned the highest weight. To generate an output, we now take a weighted combination of the corresponding values.</p>
+
+<p><img align="left" src="https://dev-to-uploads.s3.amazonaws.com/i/23oavy7fci5j71gkpob0.jpg" width="750" height="450" /></p>
+
+<p>In the flow chart above, we feed the Value (V), Key (K) and Query (Q) into a <em>linear layer</em> with, say 3, projections each of V, K and Q. Then we compute a <em>scalar dot product attention</em> of each of the projection, one head per linear layer, thus we get 3 heads of scaled dot product attention . Now we concatenate these heads into one and feed the concatenated output into a linear layer which then outputs the <strong>multi-head attention</strong>.
+In the case of Multi-Head Attention, <em>we compute multiple attentions per query with different weights</em>.</p>
+<h2 id="masked-multi-head-attention">Masked Multi-Head Attention</h2>
+<p>When decoding the output from encoder, an output value should only depend upon previous outputs and not the future outputs. Thus, to ensure that future values have zero attention, we mask them. We define masked multi-head attention as the multi-head attention where some values are masked and the probabilities of masked values are nullified to prevent them from being selected.
+Mathematically, as illustrated below, Masked Multi-Head Attention is calculated by the addition of ‘M’, a mask matrix of zeroes and negative infinity to the transpose of query.</p>
+
+<p><img align="left" src="https://dev-to-uploads.s3.amazonaws.com/i/j3bvppfefpdq4wiczzyf.jpg" width="800" height="450" /></p>
+
+<p>Q<sup>T</sup> : Transpose of Query <br />
+K : Key <br />
+V : Value <br />
+d<sub>k</sub> : Dimensionality of each key <br />
+M : Mask Matrix of 0s and -∞ <br /></p>
+
+<h2 id="layer-normalisation">Layer Normalisation</h2>
+<p>In the performance of Transformer, layer normalisation [2] introduced by Lei Ba et al. plays a key role.
+The interdependency of weights and their constant change during computation is eliminated with the help of layer normalisation. Normalisation ensures that regardless of how we set the weights, the output of a layer have a mean of ‘0’ and a variance of ‘1’. Thus, the scale of these outputs is going to be the same leading to faster convergence.</p>
+
+<p>While in case of <strong>layer normalisation</strong>, normalisation is at a layer level whereas for <strong>batch normalisation</strong>, it is performed for one hidden unit but by normalizing across a batch of inputs.</p>
+
+<h2 id="understanding-complexities">Understanding Complexities</h2>
+
+<p>In a self attention network, a layer consists of ‘n’ positions. For each position, the dimensionality is given as ‘d’. Computation in one layer is going to be of order ‘n<sup>2</sup>’ because for every position we attend to every other position. For each such pair, we are going to compute an embedding of dimensionality ‘d’. Thus, the complexity of every layer is ‘n<sup>2</sup>d’.</p>
+
+<p>In this blog we covered multiple topics associated with the concept of Attention.</p>
+
+<p><strong>References :</strong> <br />
+<br />
+[1] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. Attention is all you need. In Proceedings of the 31st International Conference on Neural Information Processing Systems (NIPS’17). Curran Associates Inc., Red Hook, NY, USA, 6000–6010.
+[2] J. L. Ba, J. R. Kiros, and G. E. Hinton. Layer normalization. arXiv preprint arXiv:1607.06450,
+2016.</p>
 
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2020/twitter/">Paying Attention Again!</a></h3>
-        <p class="post-meta">October 28, 2020</p>
-        <p>Delving Deeper into Attention</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2020/github-metadata/">Let's pay some Attention !</a></h3>
-        <p class="post-meta">September 3, 2020</p>
-        <p>Introduction to Attention Mechanism</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2020/math/">Python to Neural Networks - A Guide for Beginners</a></h3>
-        <p class="post-meta">August 23, 2020</p>
-        <p>My findings for learning ML/DL</p>
-      </li>
-    
-  </ul>
+  </article>
 
   
-
 
 </div>
 

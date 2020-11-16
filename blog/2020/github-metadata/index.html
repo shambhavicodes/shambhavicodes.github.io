@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Shambhavi  Mishra | blank</title>
+<title>Shambhavi  Mishra | Let's pay some Attention !</title>
 <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
@@ -29,7 +29,7 @@
 <link rel="shortcut icon" href="/assets/img/favicon.ico">
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/blog/2020/github-metadata/">
 
 <!-- Theming-->
 
@@ -131,38 +131,58 @@
     <!-- Content -->
 
     <div class="container mt-5">
-      <div class="post">
+      
 
-  <div class="header-bar">
-    <h1>blogs</h1>
-    <h2>blogs on ML and DL</h2>
-  </div>
+<div class="post">
 
+  <header class="post-header">
+    <h1 class="post-title">Let's pay some Attention !</h1>
+    <p class="post-meta">September 3, 2020</p>
+  </header>
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2020/twitter/">Paying Attention Again!</a></h3>
-        <p class="post-meta">October 28, 2020</p>
-        <p>Delving Deeper into Attention</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2020/github-metadata/">Let's pay some Attention !</a></h3>
-        <p class="post-meta">September 3, 2020</p>
-        <p>Introduction to Attention Mechanism</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/blog/2020/math/">Python to Neural Networks - A Guide for Beginners</a></h3>
-        <p class="post-meta">August 23, 2020</p>
-        <p>My findings for learning ML/DL</p>
-      </li>
-    
-  </ul>
+  <article class="post-content">
+    <p>Before discussing a new technology or methodology, we should try to understand the need of it. And so, let us know what gave path to the Transformer Networks.</p>
+
+<h2 id="challenges-with-recurrent-neural-networks">Challenges with Recurrent Neural Networks</h2>
+<p><br />
+<img align="left" src="https://dev-to-uploads.s3.amazonaws.com/i/ptwajkhdgj3i1zhgsqgv.png" width="750" height="450" />
+<em>(Image Source : mc.ai)</em></p>
+
+<p>Gradients are simply vectors pointing in the direction of highest rate of increase of the function. During backpropagation, gradients go through matrix multiplication multiple times using the chain rule. Small gradients get smaller until they vanish and thus it gets harder to train the weights. This is called the vanishing gradient problem.
+While smaller gradients vanish, if your gradient is a large value they go on increasing and result in very large updates to our network. This is known as the exploding gradient problem.</p>
+
+<p>Another challenge one faces with RNNs is that of ‘reccurence’. Recurrence prevents parallel computation.
+Also, large number of training steps are required to train an RNN.</p>
+
+<p>Solution to all our problems is - <strong>Transformers</strong>!
+As the title says, <em>Attention is all you need</em> by <a href="https://arxiv.org/abs/1706.03762">Vaswani et al, (2017)</a> is the paper that introduced the concept of transformers.
+Let us first understand the <strong>Attention Mechanism</strong>.
+Below attached is an image from my notes of <a href="https://www.youtube.com/channel/UC7ZVvEo7-B7lA6LY2MVX72A">Prof. Pascal Poupart’s</a> lecture on Transformers.</p>
+
+<p><img align="left" src="https://dev-to-uploads.s3.amazonaws.com/i/nvhmz014asq2ygtwip42.jpg" width="750" height="450" /></p>
+
+<p>Attention Mechanism mimics the retrieval of a value (v) for a query (q) based on a key (k) in the database. 
+We have a query and some keys (k1, k2, k3, k4), we aim to produce an output which is  a linear combination of values where the weights come from the similarity between our query and keys. 
+In the above diagram, the first layer consists of the keys (vectors). We generate another layer from the similarity comparison of these keys with the query (q). Thus the second layer consists of similarities (s).</p>
+
+<p>We take softmax of these values to yield another layer (a). The product of values in (a) with the values (v) gives us the attention value.</p>
+
+<p>So far we have understood what gave rise to the need of <em>Attention</em> and what exactly is <em>Attention Mechanism</em>.
+What more will we cover?</p>
+<ul>
+  <li>Multihead Attention</li>
+  <li>Masked Multihead Attention</li>
+  <li>Layer Normalisation</li>
+  <li>Positional Embedding</li>
+  <li>Comparison of Self Attention and Recurrent Layers</li>
+</ul>
+
+<p>Let’s cover all this in the next blog! 
+You can follow me on <a href="https://twitter.com/ShambhaviCodes">twitter</a> where I share all the good content and blogs!</p>
+
+  </article>
 
   
-
 
 </div>
 
