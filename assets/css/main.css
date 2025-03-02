@@ -65,6 +65,17 @@ a:hover:after, table.table a:hover:after { width: 100%; }
 
 .news table th { color: var(--global-text-color); }
 
+.scrollable-news {
+  max-height: 300px; /* Set the height of the scrollable area */
+  overflow-y: auto;  /* Enable vertical scrolling */
+  border: 1px solid #dddddd; /* Optional: Add a border */
+  padding: 10px; /* Optional: Add padding for better appearance */
+  background-color: #f9f9f9; /* Optional: Background color */
+  box-shadow: 0px 4px 6px rgba(94, 11, 97, 0.1);
+  border-radius: 5px;
+
+}
+
 .social { text-align: center; }
 .social .contact-icon { font-size: 4rem; }
 .social .contact-icon a { color: var(--global-icon-color); }
